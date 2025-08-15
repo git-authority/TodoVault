@@ -1,0 +1,116 @@
+body {
+  background-color: #0f0f0f;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: white;
+}
+
+.container {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  width: 320px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #2a2a2a;
+  color: white;
+}
+
+#todo-input::placeholder { color: #888; }
+
+#add-task-btn {
+  background-color: #7b2ff7;
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+#add-task-btn:hover { background-color: #6920d4; }
+
+#todo-list { list-style: none; padding: 0; margin: 0; }
+
+/* each task box */
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2a2a2a;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+
+  /* fade-in */
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeIn 0.28s ease forwards;
+}
+
+/* style the text (span inside .task) */
+.task > span {
+  background: transparent; /* no red background */
+  padding: 0;              /* no extra padding */
+  border-radius: 0;
+  color: #ffffff;          /* plain white text */
+  font-size: 14px;
+}
+
+
+/* style the Delete button (plain button inside .task) */
+.task > button {
+  background-color: #ff4d4d;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.15s ease;
+}
+.task > button:hover { background-color: #cc0000; }
+
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* fade-out animation (simple) */
+.task.removing {
+  animation: fadeOutSimple 220ms ease forwards;
+}
+
+@keyframes fadeOutSimple {
+  to {
+    opacity: 0;
+    transform: translateX(12px) scale(0.98);
+  }
+}
+
+
+.task.completed > span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+
